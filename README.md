@@ -1,8 +1,7 @@
 # soil-erosion-detection
 ## Soil Erosion Detection
 
-This project aims to detect soil erosion areas on satellite images using a deep learning approach. Specifically, we use the U-Net neural network architecture to train a model on a dataset of labeled images.
-Задача состоит в обучении нейронной сети обнаружению эрозий почвы по аэрофотоснимкам. 
+This project aims to detect soil erosion areas on satellite images using a deep learning approach. Specifically, we use the U-Net neural network architecture to train a model on a dataset of labeled images. 
 
 # Dataset
 Given:

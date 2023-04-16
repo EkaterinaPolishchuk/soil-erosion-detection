@@ -33,7 +33,7 @@ model_unet - saved trained model
 
 data - part of the dataset.
 
-requirements.txt - the required dependencies
+requirements.txt - file that stores information about all the libraries, modules, and packages
 
 ------
 Possible solutions for the task using and without using artificial intelligence are presented in [this article.](https://www.mdpi.com/2072-4292/12/24/4047). 

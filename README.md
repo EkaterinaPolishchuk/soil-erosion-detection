@@ -1,44 +1,45 @@
 # soil-erosion-detection
-## Обнаружение эрозии почвы
+## Soil Erosion Detection
 
+This project aims to detect soil erosion areas on satellite images using a deep learning approach. Specifically, we use the U-Net neural network architecture to train a model on a dataset of labeled images.
 Задача состоит в обучении нейронной сети обнаружению эрозий почвы по аэрофотоснимкам. 
 
-Решение задачи обнаружения эрозий почвы с помощью семантической сегментации.
+# Dataset
+Given:
 
-Дано: 
-1. аэрофотоснимок 
+1. Aerial photograph
 2. GeoDataframe
+A dataset with images and binary masks from fields of an aerial photograph was formed. Since the selected fields were of different sizes, the images and binary masks were resized to a uniform size.
 
-Был сформирован датасет с изображениями и бинарными масками из полей аэрофотоснимка.
-Так как выделенные поля были разных размеров, изображения и бинарные маски были приведены к одному размеру. 
+The original size of the mask and image:
 
-Изначальный размер маски и изображения:
+![image](https://github.com/EkaterinaPolishchuk/soil-erosion-detection/blob/main/data/images/23.png) ![маска](https://github.com/EkaterinaPolishchuk/soil-erosion-detection/blob/main/data/masks/23.png)
 
-![изображение](https://github.com/EkaterinaPolishchuk/soil-erosion-detection/blob/main/data/images/23.png) ![маска](https://github.com/EkaterinaPolishchuk/soil-erosion-detection/blob/main/data/masks/23.png)
+Further, data augmentation and normalization were performed before feeding into the neural network. In total, 1000 images and masks were obtained.
 
-Далее проводилась аугментация и нормализация данных перед подачей на вход нейронной сети. Всего получилось 1000 изображений и столько же масок.
+# Model
+I use the U-Net neural network architecture to train our model on the dataset. U-Net is a convolutional neural network that is commonly used for image segmentation tasks. It consists of an encoder network that downsamples the image and a decoder network that upsamples the feature maps to produce a segmentation mask. The architecture is shown below:
+![image](https://github.com/EkaterinaPolishchuk/soil-erosion-detection/blob/main/u-net-architecture.png)
 
-В качестве архитектуры нейронной сети была выбрана архитектура U-net.
+# Training
+I split the dataset into training, validation, and test sets. I use 90% of the dataset for training, 5% for validation, and 5% for testing. I train the model using the binary cross-entropy loss function and the Adam optimizer.
 
-main.ipynb - анализ изображений, построение модели с архитектурой U-net и результаты обучения.
+# Results
+I evaluate the performance of the model on the test set using accuracy. My model achieves an accuracy score of 0.78. To improve the accuracy, it may be worth improving the quality of the images and increasing their quantity.
 
-model_unet - сохраненная обученная модель
-
-data - часть датасета
+main.ipynb - image analysis, building a U-net model, and training results.
+model_unet - saved trained model
+data - part of the dataset.
+requirements.txt - the required dependencies
 
 ------
-Возможные решения задачи с использованием и без использования искусственного интеллекта представлены в [статье](https://www.mdpi.com/2072-4292/12/24/4047). 
+Possible solutions for the task using and without using artificial intelligence are presented in [this article.](https://www.mdpi.com/2072-4292/12/24/4047). 
+Pixel-based classification:
+> Pixel-based image classification is widely used to replace visual analysis of image data. This approach typically involves applying decision rules to each pixel of the image. Decision rules can be automatically extracted from representative samples (supervised classification) or using iterative spectral clustering (unsupervised classification). Other approaches require expert knowledge for user-specified decision rule specification (knowledge-based classification). Brightness threshold values for highlighting erosion features are determined separately for each used orthophotomosaic based on their brightness ranges.
 
-Для автоматизированного решения используются:
-1. классификация изображений на основе пикселей;
-2. классификация изображений на основе объектов.
+Object-based classification:
+> Object-based image classification was developed to address the problem of fragmentation of results that arises when classifying high-resolution images based on pixels. The problem, also known as the salt-and-pepper effect, is caused by individual pixels or small groups of pixels being classified into classes different from neighboring pixels. The object-based approach solves this problem by creating spectrally homogeneous groups of pixels, called image objects or segments, followed by classifying these objects. This approach is similar to human visual interpretation. The resulting patterns are less fragmented and easier to interpret.
 
-Попиксельной классификация:
-> Классификация изображений на основе пикселей широко используется для замены визуального анализа данных изображения. Этот подход обычно включает применение правил принятия решений к каждому пикселю изображения. Правила принятия решений могут быть извлечены автоматически из репрезентативных выборок (классификация с учителем) или с использованием итеративной спектральной кластеризации (классификация без учителя). Другие подходы требуют экспертных знаний для пользовательской спецификации правил принятия решений (классификация, основанная на знаниях). Пороговые значения яркостей для выделения картин эрозии определяются отдельно для каждой используемой ортофотомозаики исходя из их яркостных диапазонов.
+Object-based classification provides more realistic, larger and smoother patterns, as well as more accurately identifies transitional categories of moderately eroded soil.
 
-Классификация изображений на основе объектов:
-> Классификация изображений на основе объектов была разработана для решения проблемы фрагментации результатов, возникающих при классификации изображений с высоким разрешением на основе пикселей. Проблема, также известная как эффект соли и перца, вызвана разделением отдельных пикселей или небольшой группы пикселей на классы, отличные от соседних с ними пикселей. Объектный подход решает проблему путем создания спектрально-однородной группы пикселей, называемых объектами изображения или сегментами, с последующей классификацией этих объектов. Этот подход похож на визуальную интерпретацию человека. Полученные шаблоны менее фрагментированы и их легче интерпретировать.
-
-Объектная классификация дает более реалистичные, крупные и гладкие узоры, а также более точно выделяет переходные категории умеренно эродированных почв.
-
-Материал выше был взят из [статьи](https://www.mdpi.com/2072-4292/12/24/4047). 
+The above material was taken from [this article](https://www.mdpi.com/2072-4292/12/24/4047). 

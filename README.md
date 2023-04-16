@@ -28,8 +28,11 @@ I split the dataset into training, validation, and test sets. I use 90% of the d
 I evaluate the performance of the model on the test set using accuracy. My model achieves an accuracy score of 0.78. To improve the accuracy, it may be worth improving the quality of the images and increasing their quantity.
 
 main.ipynb - image analysis, building a U-net model, and training results.
+
 model_unet - saved trained model
+
 data - part of the dataset.
+
 requirements.txt - the required dependencies
 
 ------

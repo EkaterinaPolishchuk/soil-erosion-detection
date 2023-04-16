@@ -36,7 +36,7 @@ data - part of the dataset.
 requirements.txt - file that stores information about all the libraries, modules, and packages
 
 ------
-Possible solutions for the task using and without using artificial intelligence are presented in [this article.](https://www.mdpi.com/2072-4292/12/24/4047). 
+Possible solutions for the task using and without using artificial intelligence are presented in [this article](https://www.mdpi.com/2072-4292/12/24/4047). 
 Pixel-based classification:
 > Pixel-based image classification is widely used to replace visual analysis of image data. This approach typically involves applying decision rules to each pixel of the image. Decision rules can be automatically extracted from representative samples (supervised classification) or using iterative spectral clustering (unsupervised classification). Other approaches require expert knowledge for user-specified decision rule specification (knowledge-based classification). Brightness threshold values for highlighting erosion features are determined separately for each used orthophotomosaic based on their brightness ranges.
 

@@ -8,6 +8,7 @@ Given:
 
 1. Aerial photograph
 2. GeoDataframe
+
 A dataset with images and binary masks from fields of an aerial photograph was formed. Since the selected fields were of different sizes, the images and binary masks were resized to a uniform size.
 
 The original size of the mask and image:
